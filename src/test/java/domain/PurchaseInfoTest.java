@@ -14,7 +14,7 @@ public class PurchaseInfoTest {
         int minusPurchaseAmount = -1000;
 
         assertThatThrownBy(() -> {
-            new PurchaseInfo(minusPurchaseAmount);
+            PurchaseInfo purchaseInfo = new PurchaseInfo(minusPurchaseAmount);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("양수 값을 입력해주세요.");
     }
@@ -33,7 +33,6 @@ public class PurchaseInfoTest {
     @Test
     @DisplayName("금액에 맞는 로또 개수 출력 테스트")
     public void count_lotto_test() {
-
         // given
         int purchasedLottoCount = 14;
         int purchaseAmount = PURCHASE_AMOUNT_UNIT * purchasedLottoCount;
