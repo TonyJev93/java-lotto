@@ -1,7 +1,7 @@
 package domain;
 
 public class PurchaseInfo {
-    public static int PURCHASE_AMOUNT_UNIT = 1000;
+    public static final int PURCHASE_AMOUNT_UNIT = 1000;
 
     private int purchaseAmount;
 
@@ -19,7 +19,7 @@ public class PurchaseInfo {
         return purchaseAmount % PURCHASE_AMOUNT_UNIT == 0;
     }
 
-    public boolean isPositivePurchaseAmount() {
+    private boolean isPositivePurchaseAmount() {
         return this.purchaseAmount > 0;
     }
 

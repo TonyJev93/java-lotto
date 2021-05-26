@@ -1,3 +1,5 @@
+package domain;
+
 import domain.PurchaseInfo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,14 +36,14 @@ public class PurchaseInfoTest {
     @DisplayName("금액에 맞는 로또 개수 출력 테스트")
     public void count_lotto_test() {
         // given
-        int purchasedLottoCount = 14;
-        int purchaseAmount = PURCHASE_AMOUNT_UNIT * purchasedLottoCount;
+        int purchaseLottoCount = 14;
+        int purchaseAmount = PURCHASE_AMOUNT_UNIT * purchaseLottoCount;
 
         // when
         PurchaseInfo purchaseInfo = new PurchaseInfo(purchaseAmount);
 
         // than
-        assertThat(purchaseInfo.countLotto()).isEqualTo(purchasedLottoCount);
+        assertThat(purchaseInfo.countLotto()).isEqualTo(purchaseLottoCount);
     }
 
 }
