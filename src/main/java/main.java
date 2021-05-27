@@ -1,0 +1,9 @@
+import runner.Runner;
+
+public class main {
+
+    public static void main(String[] args) {
+        Runner.run();
+    }
+
+}
