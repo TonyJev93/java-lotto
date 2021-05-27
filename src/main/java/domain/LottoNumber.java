@@ -10,13 +10,14 @@ public class LottoNumber implements Comparable<LottoNumber> {
     private int number;
 
     public LottoNumber(int number) {
-        this.number = number;
-        if (!isCorrectNumberRange()) {
+        if (!isCorrectNumberRange(number)) {
             throw new IllegalArgumentException("로또 번호는 " + MIN_NUMBER + "~" + MAX_NUMBER + " 사이 숫자만 가질 수 있습니다.");
         }
+
+        this.number = number;
     }
 
-    private boolean isCorrectNumberRange() {
+    private boolean isCorrectNumberRange(int number) {
         return number >= MIN_NUMBER && number <= MAX_NUMBER;
     }
 
@@ -42,5 +43,9 @@ public class LottoNumber implements Comparable<LottoNumber> {
         } else {
             return 0;
         }
+    }
+
+    public int number() {
+        return this.number;
     }
 }
