@@ -1,11 +1,14 @@
 package ui;
 
 import domain.LottoNumber;
+import ui.exception.InputNotValidException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
+
+    public static final String INPUT_SPLITTER_OF_WINNING_LOTTO_NUMBER = ",";
 
     private Client() {
         throw new AssertionError();
@@ -17,10 +20,11 @@ public class Client {
         printInputMessageForWinningLottoNumbers();
 
         String inputString = InputUtil.input();
-        String[] inputArray = inputString.split(",");
+        String[] inputArray = inputString.split(INPUT_SPLITTER_OF_WINNING_LOTTO_NUMBER);
+
         for (int i = 0; i < inputArray.length; i++) {
             String input = inputArray[i].trim();
-            isDigitInput(input);
+            checkValidationIsDigitInput(input);
             lottoNumberList.add(new LottoNumber(Integer.valueOf(input)));
         }
 
@@ -35,9 +39,7 @@ public class Client {
         printInputMessageForPurchaseAmount();
         String input = InputUtil.input();
 
-        if (!isDigitInput(input)) {
-            throw new IllegalArgumentException("숫자 외의 문자는 입력할 수 없습니다.");
-        }
+        checkValidationIsDigitInput(input);
 
         return Integer.valueOf(input);
     }
@@ -50,21 +52,18 @@ public class Client {
         System.out.println(input + "개를 구매했습니다.");
     }
 
-    private static boolean isDigitInput(String input) {
+    private static void checkValidationIsDigitInput(String input) {
         for (int i = 0; i < input.length(); i++) {
             if (!isNumber(input.charAt(i))) {
-                System.out.println("[입력오류] 1~9 사이의 숫자를 입력해 주세요.");
-                return false;
+                throw new InputNotValidException("숫자를 입력해 주세요.");
             }
         }
-        return true;
     }
 
     private static boolean isNumber(char inputChar) {
         if ('0' <= inputChar && inputChar <= '9') {
             return true;
         }
-
         return false;
     }
 
