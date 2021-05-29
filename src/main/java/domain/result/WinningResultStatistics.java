@@ -4,25 +4,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class WinningResultStatics {
+public class WinningResultStatistics {
     private static final int DEFAULT_COUNT = 0;
 
     private int totalPurchaseAmount;
     private int totalWinningAmount;
-    private Map<WinningInfo, Integer> winningInfoStatics;
+    private Map<WinningInfo, Integer> winningInfoStatistics;
 
-    public WinningResultStatics() {
+    public WinningResultStatistics() {
         this.totalPurchaseAmount = 0;
         this.totalWinningAmount = 0;
+        this.winningInfoStatistics = new HashMap<>();
     }
 
-    public WinningResultStatics(PurchaseInfo purchaseInfo, List<WinningResult> winningResults) {
-        this.winningInfoStatics = staticsWinningInfo(winningResults);
-        this.totalPurchaseAmount = purchaseInfo.purchaseAmount();
+    private WinningResultStatistics(int totalPurchaseAmount, List<WinningResult> winningResults) {
+        this.winningInfoStatistics = statisticsWinningInfo(winningResults);
+        this.totalPurchaseAmount = totalPurchaseAmount;
         this.totalWinningAmount = calculateTotalWinningAmount(winningResults);
     }
 
-    private Map<WinningInfo, Integer> staticsWinningInfo(List<WinningResult> winningResults) {
+    public static WinningResultStatistics of(int totalPurchaseAmount, List<WinningResult> winningResultList) {
+        return new WinningResultStatistics(totalPurchaseAmount, winningResultList);
+    }
+
+    private Map<WinningInfo, Integer> statisticsWinningInfo(List<WinningResult> winningResults) {
         Map<WinningInfo, Integer> winningInfoStatics = new HashMap<>();
         int increaseUnit = 1;
 
@@ -71,7 +76,7 @@ public class WinningResultStatics {
         if (winningInfo.isPrint()) {
             sb.append(winningInfo.matchingCount() + "개 일치 ");
             sb.append("(" + winningInfo.winningAmount() + "원)- ");
-            sb.append(winningInfoStatics.getOrDefault(winningInfo, DEFAULT_COUNT) + "개");
+            sb.append(winningInfoStatistics.getOrDefault(winningInfo, DEFAULT_COUNT) + "개");
             sb.append("\n");
         }
         return sb.toString();

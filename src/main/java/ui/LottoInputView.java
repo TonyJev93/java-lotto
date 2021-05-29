@@ -6,11 +6,11 @@ import ui.exception.InputNotValidException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Client {
+public class InputView {
 
     public static final String INPUT_SPLITTER_OF_WINNING_LOTTO_NUMBER = ",";
 
-    private Client() {
+    private InputView() {
         throw new AssertionError();
     }
 
@@ -65,9 +65,5 @@ public class Client {
             return true;
         }
         return false;
-    }
-
-    public static void printString(String s) {
-        System.out.println(s);
     }
 }

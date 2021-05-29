@@ -25,15 +25,17 @@ class PersonTest {
         int purchaseAmount = 14000;
         PurchaseInfo purchaseInfo = new PurchaseInfo(purchaseAmount);
 
-        Person person = Person.purchaseLotto(purchaseInfo);
+        Person person = new Person();
+        person.purchaseLotto(purchaseInfo);
 
         System.out.println(person.toString());
         System.out.println(winningLotto.toString());
         System.out.println(person.lottoListToString());
-        person.staticsWinningResults(winningLotto);
 
-        WinningResultStatics winningResultStatics = person.winningResultStatics();
-        winningResultStatics.print();
+        person.statisticsWinningResults(winningLotto);
+
+        WinningResultStatistics winningResultStatistics = person.winningResultStatistics();
+        winningResultStatistics.print();
     }
 
 

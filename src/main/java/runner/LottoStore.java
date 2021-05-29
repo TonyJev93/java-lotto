@@ -10,7 +10,8 @@ import java.util.List;
 
 public class Runner {
     public static void run() {
-        Person person = purchaseLotto();
+        PurchaseInfo purchaseInfo = inputPurchaseInfo();
+        Person person = purchaseLotto(purchaseInfo);
         WinningLotto winningLotto = inputWinningLotto();
         getResult(person, winningLotto);
     }
@@ -26,8 +27,7 @@ public class Runner {
         return winningLotto;
     }
 
-    private static Person purchaseLotto() {
-        PurchaseInfo purchaseInfo = inputPurchaseInfo();
+    private static Person purchaseLotto(PurchaseInfo purchaseInfo) {
         Person person = Person.purchaseLotto(purchaseInfo);
         Client.printString(person.lottoListToString());
         return person;

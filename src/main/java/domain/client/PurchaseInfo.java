@@ -17,6 +17,10 @@ public class PurchaseInfo {
         this.purchaseAmount = purchaseAmount;
     }
 
+    public PurchaseInfo() {
+        this.purchaseAmount = 0;
+    }
+
     public int purchaseAmount() {
         return this.purchaseAmount;
     }
