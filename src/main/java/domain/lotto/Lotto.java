@@ -1,4 +1,8 @@
-package domain;
+package domain.lotto;
+
+import domain.lotto.exception.LottoHaveDuplicatedNumberException;
+import domain.lotto.exception.LottoNotValidSizeException;
+import domain.winningresult.WinningResult;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,10 +34,10 @@ public class Lotto {
 
     private void validate() {
         if (!isCorrectLottoSize()) {
-            throw new IllegalArgumentException("로또 번호는 " + Lotto.LOTTO_SIZE + "개여야 합니다.");
+            throw new LottoNotValidSizeException();
         }
-        if (hasDuplicatedLottoNumber()) {
-            throw new IllegalArgumentException("중복된 로또 번호가 존재합니다.");
+        if (haveDuplicatedLottoNumber()) {
+            throw new LottoHaveDuplicatedNumberException();
         }
     }
 
@@ -42,7 +46,7 @@ public class Lotto {
         return this.lottoNumberList.size();
     }
 
-    public boolean hasDuplicatedLottoNumber() {
+    public boolean haveDuplicatedLottoNumber() {
         assert this.lottoNumberList != null;
         return this.lottoNumberList.size() > this.lottoNumberList.stream().distinct().count();
     }

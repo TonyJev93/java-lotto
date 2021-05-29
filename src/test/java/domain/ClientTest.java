@@ -1,12 +1,17 @@
 package domain;
 
+import domain.lottoclient.Client;
+import domain.lottoclient.PurchaseInfo;
+import domain.lotto.LottoNumber;
+import domain.lotto.WinningLotto;
+import domain.winningresult.WinningResultStatistics;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-class PersonTest {
+class ClientTest {
     @Test
     @DisplayName("로또번호 당첨 금액 조회")
     // TODO : 당첨금액 확인 Random 어떻게 테스트 하는지 알려주셈요~
@@ -23,18 +28,18 @@ class PersonTest {
         WinningLotto winningLotto = new WinningLotto(winningLottoNumberList);
 
         int purchaseAmount = 14000;
-        PurchaseInfo purchaseInfo = new PurchaseInfo(purchaseAmount);
+        PurchaseInfo purchaseInfo = new PurchaseInfo(Money.valueOf(purchaseAmount));
 
-        Person person = new Person();
-        person.purchaseLotto(purchaseInfo);
+        Client client = new Client();
+        client.purchaseLotto(purchaseInfo);
 
-        System.out.println(person.toString());
+        System.out.println(client.toString());
         System.out.println(winningLotto.toString());
-        System.out.println(person.lottoListToString());
+        System.out.println(client.lottoListToString());
 
-        person.statisticsWinningResults(winningLotto);
+        client.statisticsWinningResults(winningLotto);
 
-        WinningResultStatistics winningResultStatistics = person.winningResultStatistics();
+        WinningResultStatistics winningResultStatistics = client.winningResultStatistics();
         winningResultStatistics.print();
     }
 

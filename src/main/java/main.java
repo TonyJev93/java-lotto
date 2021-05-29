@@ -1,9 +1,9 @@
-import runner.Runner;
+import runner.LottoStore;
 
 public class main {
 
     public static void main(String[] args) {
-        Runner.run();
+        LottoStore.run();
     }
 
 }

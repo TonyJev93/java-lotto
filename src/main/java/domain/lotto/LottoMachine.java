@@ -1,4 +1,6 @@
-package domain;
+package domain.lotto;
+
+import domain.lotto.exception.LottoNeedAtLeastOneMoreException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,7 +27,7 @@ public class LottoMachine {
 
     public static LottoList generateLottoList(int purchaseLottoCount) {
         if (!isPositiveInput(purchaseLottoCount)) {
-            throw new IllegalArgumentException("최소 생성 가능한 로또 개수는 1개 이상입니다.");
+            throw new LottoNeedAtLeastOneMoreException();
         }
 
         LottoList lottoList = new LottoList();

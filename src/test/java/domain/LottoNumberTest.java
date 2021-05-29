@@ -1,5 +1,7 @@
 package domain;
 
+import domain.lotto.LottoNumber;
+import domain.lotto.exception.LottoNumberNotCorrectRangeException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,8 +16,8 @@ class LottoNumberTest {
 
         assertThatThrownBy(() -> {
             new LottoNumber(lowerLottoNumber);
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("로또 번호는 " + LottoNumber.MIN_NUMBER + "~" + LottoNumber.MAX_NUMBER + " 사이 숫자만 가질 수 있습니다.");
+        }).isExactlyInstanceOf(LottoNumberNotCorrectRangeException.class)
+                .hasMessage(LottoNumberNotCorrectRangeException.ERROR_MESSAGE);
 
     }
 
@@ -26,8 +28,8 @@ class LottoNumberTest {
 
         assertThatThrownBy(() -> {
             new LottoNumber(moreLottoNumber);
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("로또 번호는 " + LottoNumber.MIN_NUMBER + "~" + LottoNumber.MAX_NUMBER + " 사이 숫자만 가질 수 있습니다.");
+        }).isExactlyInstanceOf(LottoNumberNotCorrectRangeException.class)
+                .hasMessage(LottoNumberNotCorrectRangeException.ERROR_MESSAGE);
 
     }
 

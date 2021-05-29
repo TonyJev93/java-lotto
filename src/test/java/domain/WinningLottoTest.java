@@ -1,5 +1,9 @@
 package domain;
 
+import domain.lotto.LottoNumber;
+import domain.lotto.WinningLotto;
+import domain.lotto.exception.LottoHaveDuplicatedNumberException;
+import domain.lotto.exception.LottoNotValidSizeException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +29,8 @@ public class WinningLottoTest {
 
         assertThatThrownBy(() -> {
             new WinningLotto(winningLottoNumberList);
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isExactlyInstanceOf(LottoNotValidSizeException.class)
+                .hasMessage(LottoNotValidSizeException.ERROR_MESSAGE);
     }
 
     @Test
@@ -44,7 +49,8 @@ public class WinningLottoTest {
 
         assertThatThrownBy(() -> {
             new WinningLotto(winningLottoNumberList);
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isExactlyInstanceOf(LottoNotValidSizeException.class)
+                .hasMessage(LottoNotValidSizeException.ERROR_MESSAGE);
     }
 
     @Test
@@ -79,6 +85,7 @@ public class WinningLottoTest {
 
         assertThatThrownBy(() -> {
             new WinningLotto(winningLottoNumberList);
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isExactlyInstanceOf(LottoHaveDuplicatedNumberException.class)
+                .hasMessage(LottoHaveDuplicatedNumberException.ERROR_MESSAGE);
     }
 }

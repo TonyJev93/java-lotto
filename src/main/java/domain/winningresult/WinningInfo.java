@@ -1,4 +1,6 @@
-package domain;
+package domain.winningresult;
+
+import domain.winningresult.exception.WinningInfoNotFoundException;
 
 public enum WinningInfo {
 
@@ -26,7 +28,7 @@ public enum WinningInfo {
                 return WinningInfo.values()[i];
             }
         }
-        throw new IllegalArgumentException("존재하지 않는 당첨 정보입니다.");
+        throw new WinningInfoNotFoundException();
     }
 
     public boolean isPrint() {

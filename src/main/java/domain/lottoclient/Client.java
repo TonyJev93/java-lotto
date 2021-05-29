@@ -1,4 +1,9 @@
-package domain;
+package domain.lottoclient;
+
+import domain.lotto.LottoList;
+import domain.lotto.LottoMachine;
+import domain.lotto.WinningLotto;
+import domain.winningresult.WinningResultStatistics;
 
 public class Client {
     private PurchaseInfo purchaseInfo;

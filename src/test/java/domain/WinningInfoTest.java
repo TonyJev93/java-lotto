@@ -1,5 +1,7 @@
 package domain;
 
+import domain.winningresult.WinningInfo;
+import domain.winningresult.exception.WinningInfoNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,8 +19,8 @@ class WinningInfoTest {
 
         assertThatThrownBy(() -> {
             WinningInfo.find(matchingCount);
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("존재하지 않는 당첨 정보입니다.");
+        }).isExactlyInstanceOf(WinningInfoNotFoundException.class)
+                .hasMessage(WinningInfoNotFoundException.ERROR_MESSAGE);
     }
 
     @ParameterizedTest

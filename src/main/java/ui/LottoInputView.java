@@ -1,16 +1,19 @@
 package ui;
 
-import domain.LottoNumber;
-import ui.exception.InputNotValidException;
+import domain.Money;
+import domain.lotto.LottoNumber;
+import domain.lottoclient.PurchaseInfo;
+import util.InputUtil;
+import util.IntegerUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class InputView {
+public class LottoInputView {
 
     public static final String INPUT_SPLITTER_OF_WINNING_LOTTO_NUMBER = ",";
 
-    private InputView() {
+    private LottoInputView() {
         throw new AssertionError();
     }
 
@@ -24,7 +27,7 @@ public class InputView {
 
         for (int i = 0; i < inputArray.length; i++) {
             String input = inputArray[i].trim();
-            checkValidationIsDigitInput(input);
+            IntegerUtil.checkValidationIsDigitInput(input);
             lottoNumberList.add(new LottoNumber(Integer.valueOf(input)));
         }
 
@@ -35,13 +38,16 @@ public class InputView {
         System.out.println("지난 주 당첨 번호를 입력해 주세요.");
     }
 
-    public static Integer inputPurchaseAmount() {
+    public static PurchaseInfo inputPurchaseAmount() {
         printInputMessageForPurchaseAmount();
-        String input = InputUtil.input();
 
-        checkValidationIsDigitInput(input);
+        Integer purchaseAmount = IntegerUtil.valueOfString(InputUtil.input());
 
-        return Integer.valueOf(input);
+        PurchaseInfo purchaseInfo = new PurchaseInfo(Money.valueOf(purchaseAmount));
+
+        LottoInputView.printPurchaseLottoCount(purchaseInfo.countLotto());
+
+        return purchaseInfo;
     }
 
     public static void printInputMessageForPurchaseAmount() {
@@ -52,18 +58,5 @@ public class InputView {
         System.out.println(input + "개를 구매했습니다.");
     }
 
-    private static void checkValidationIsDigitInput(String input) {
-        for (int i = 0; i < input.length(); i++) {
-            if (!isNumber(input.charAt(i))) {
-                throw new InputNotValidException("숫자를 입력해 주세요.");
-            }
-        }
-    }
 
-    private static boolean isNumber(char inputChar) {
-        if ('0' <= inputChar && inputChar <= '9') {
-            return true;
-        }
-        return false;
-    }
 }

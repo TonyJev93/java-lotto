@@ -1,4 +1,7 @@
-package domain;
+package domain.lotto;
+
+import domain.lotto.Lotto;
+import domain.lotto.LottoNumber;
 
 import java.util.List;
 

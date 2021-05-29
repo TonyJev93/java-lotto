@@ -1,4 +1,6 @@
-package domain;
+package domain.lotto;
+
+import domain.lotto.exception.LottoNumberNotCorrectRangeException;
 
 import java.util.Objects;
 
@@ -11,7 +13,7 @@ public class LottoNumber implements Comparable<LottoNumber> {
 
     public LottoNumber(int number) {
         if (!isCorrectNumberRange(number)) {
-            throw new IllegalArgumentException("로또 번호는 " + MIN_NUMBER + "~" + MAX_NUMBER + " 사이 숫자만 가질 수 있습니다.");
+            throw new LottoNumberNotCorrectRangeException();
         }
 
         this.number = number;

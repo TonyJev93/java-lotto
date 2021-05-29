@@ -1,4 +1,4 @@
-package domain;
+package domain.winningresult;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,5 +1,8 @@
 package domain;
 
+import domain.lotto.LottoList;
+import domain.lotto.LottoMachine;
+import domain.lotto.exception.LottoNeedAtLeastOneMoreException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,8 +20,8 @@ public class LottoMachineTest {
         assertThatThrownBy(() -> {
             // when
             lottoMachine.generateLottoList(purchaseLottoCount);
-        }).isInstanceOf(IllegalArgumentException.class)
-        .hasMessage("최소 생성 가능한 로또 개수는 1개 이상입니다.");
+        }).isExactlyInstanceOf(LottoNeedAtLeastOneMoreException.class)
+                .hasMessage(LottoNeedAtLeastOneMoreException.ERROR_MESSAGE);
     }
 
     @Test

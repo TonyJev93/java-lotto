@@ -1,4 +1,4 @@
-package domain;
+package domain.winningresult;
 
 public class WinningResult {
     private WinningInfo winningInfo;

@@ -1,5 +1,10 @@
 package domain;
 
+import domain.lotto.Lotto;
+import domain.lotto.LottoNumber;
+import domain.winningresult.WinningInfo;
+import domain.lotto.WinningLotto;
+import domain.winningresult.WinningResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,7 +13,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.util.Arrays;
 import java.util.List;
 
-import static domain.Lotto.LOTTO_SIZE;
+import static domain.lotto.Lotto.LOTTO_SIZE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -31,7 +36,7 @@ public class LottoTest {
         Lotto lotto = Lotto.getRandomInstance();
 
         // then
-        assertFalse(lotto.hasDuplicatedLottoNumber());
+        assertFalse(lotto.haveDuplicatedLottoNumber());
     }
 
     @ParameterizedTest
