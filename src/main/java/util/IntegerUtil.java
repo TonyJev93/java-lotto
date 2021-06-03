@@ -1,6 +1,6 @@
 package util;
 
-import ui.exception.InputNotValidException;
+import util.exception.InputNotIntegerException;
 
 public class IntegerUtil {
 
@@ -17,7 +17,7 @@ public class IntegerUtil {
     public static void checkValidationIsDigitInput(String input) {
         for (int i = 0; i < input.length(); i++) {
             if (!isNumber(input.charAt(i))) {
-                throw new InputNotValidException("숫자를 입력해 주세요.");
+                throw new InputNotIntegerException();
             }
         }
     }
